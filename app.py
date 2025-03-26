@@ -14,7 +14,7 @@ if user_input:
     try:
         openai.api_key = st.secrets["OPENAI_API_KEY"]
         response = openai.ChatCompletion.create(
-            model="gpt-4-1106-preview",
+            model="gpt-4",
             messages=[
                 {"role": "system", "content": "Du bist ein kirchlicher Assistent, der Fragen zu evangelischem Kirchenrecht beantwortet. Verwende Kirchengesetze der EVLKS, wenn möglich."},
                 {"role": "user", "content": user_input},
