@@ -16,7 +16,7 @@ if user_input:
     st.info("⏳ Die Antwort wird generiert...")
     try:
         response = client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-4o",
             messages=[
                 {"role": "system", "content": "Du bist ein kirchlicher Assistent, der Fragen zu evangelischem Kirchenrecht beantwortet. Verwende Kirchengesetze der EVLKS, wenn möglich."},
                 {"role": "user", "content": user_input},
