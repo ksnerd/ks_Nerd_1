@@ -18,7 +18,7 @@ if user_input:
         response = client.chat.completions.create(
             model="gpt-4o",
             messages=[
-                {"role": "system", "content": "Du bist ein kirchlicher Assistent, der Fragen zu evangelischem Kirchenrecht beantwortet. Verwende Kirchengesetze der EVLKS, wenn möglich."},
+                {"role": "system", "content": "Du bist ein kirchlicher Assistent, der Fragen zu evangelischem Kirchenrecht beantwortet. Verwende Kirchengesetze der EVLKS, wenn möglich. Du findest Kirchengesetze auf www.evlks.de und unterseiten. Gib die Quellen als Links in deiner Antwort an!"},
                 {"role": "user", "content": user_input},
             ],
             temperature=0.3
