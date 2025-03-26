@@ -11,20 +11,13 @@ user_input = st.text_input("Frage eingeben:")
 
 if user_input:
     st.info("⏳ Die Antwort wird generiert...")
-    try:
-        openai.api_key = st.secrets["OPENAI_API_KEY"]
-        response = openai.ChatCompletion.create(
-            model="gpt-4",
-            messages=[
-                {"role": "system", "content": "Du bist ein kirchlicher Assistent, der Fragen zu evangelischem Kirchenrecht beantwortet. Verwende Kirchengesetze der EVLKS, wenn möglich."},
-                {"role": "user", "content": user_input},
-            ],
-            temperature=0.3
-        )
-        answer = response["choices"][0]["message"]["content"]
-        st.success(answer)
-        st.markdown("---")
-        st.markdown("**Beispielhafter Gesetzesauszug (Platzhalter):**\n\n> § 4 KVwG: Der Kirchenvorstand ist beschlussfähig, wenn mehr als die Hälfte der Mitglieder anwesend ist.")
+            openai.api_key = st.secrets["OPENAI_API_KEY"]
+        try:
+            models = openai.Model.list()
+            st.success("✅ Verbindung zur OpenAI-API erfolgreich!")
+        except Exception as inner_error:
+            st.error(f"❌ Fehler beim API-Zugriff: {inner_error}")
+
     except Exception as e:
         st.error("Fehler bei der Antwortgenerierung. Bitte API-Key prüfen oder später erneut versuchen.")
 
