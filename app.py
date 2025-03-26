@@ -1,7 +1,6 @@
 
 import streamlit as st
 import openai
-import os
 
 st.set_page_config(page_title="Pfarramtsleiter GPT", layout="centered")
 
@@ -25,12 +24,9 @@ if user_input:
         answer = response["choices"][0]["message"]["content"]
         st.success(answer)
         st.markdown("---")
-        st.markdown("**Beispielhafter Gesetzesauszug (Platzhalter):**
-
-> § 4 KVwG: Der Kirchenvorstand ist beschlussfähig, wenn mehr als die Hälfte der Mitglieder anwesend ist.")
+        st.markdown("**Beispielhafter Gesetzesauszug (Platzhalter):**\n\n> § 4 KVwG: Der Kirchenvorstand ist beschlussfähig, wenn mehr als die Hälfte der Mitglieder anwesend ist.")
     except Exception as e:
         st.error("Fehler bei der Antwortgenerierung. Bitte API-Key prüfen oder später erneut versuchen.")
 
 st.markdown("---")
-st.markdown("**Hinweis:** Diese Antworten stellen keine rechtsverbindliche Auskunft dar. Bitte prüfen Sie alle Informationen eigenverantwortlich.  
-**Projektleitung:** Sebastian Keller")
+st.markdown("**Hinweis:** Diese Antworten stellen keine rechtsverbindliche Auskunft dar. Bitte prüfen Sie alle Informationen eigenverantwortlich.  \n**Projektleitung:** Sebastian Keller")
