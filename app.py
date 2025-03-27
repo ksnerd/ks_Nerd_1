@@ -29,6 +29,21 @@ if user_input:
         st.markdown("**Beispielhafter Gesetzesauszug (Platzhalter):**\n\n> § 4 KVwG: Der Kirchenvorstand ist beschlussfähig, wenn mehr als die Hälfte der Mitglieder anwesend ist.")
     except Exception as e:
         st.error(f"Fehler bei der Antwortgenerierung:\n\n{e}")
+assistant_id = "asst_abc123xyz"
+thread = client.beta.threads.create()
+message = client.beta.threads.messages.create(
+    thread_id=thread.id,
+    role="user",
+    content=user_input
+)
+run = client.beta.threads.runs.create(
+    thread_id=thread.id,
+    assistant_id=assistant_id
+)
+
+# Optional: auf das Ergebnis warten (Polling)
+result = client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
+
 
 st.markdown("---")
 st.markdown("**Hinweis:** Diese Antworten stellen keine rechtsverbindliche Auskunft dar. Bitte prüfen Sie alle Informationen eigenverantwortlich.  \n**Projektleitung:** Sebastian Keller")
